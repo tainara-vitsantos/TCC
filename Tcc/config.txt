@@ -1,0 +1,8 @@
+// Pra rodar o projeto
+npm run dev
+
+// Configuração Git
+git config --global user.name "Tainara Santos"
+git config --global user.email "tainaravit.santos28@gmail.com"
+
+
