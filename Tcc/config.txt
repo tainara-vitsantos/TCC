@@ -2,7 +2,7 @@
 
 //Comando pra parar de dar o erro.
 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
-
+npm install
 npm run dev
 
 // Configuração Git

@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form"
 import { useState } from "react"
+import { Link } from "react-router-dom"
+
 
 function Cadastro() {
   const {
@@ -104,6 +106,14 @@ function Cadastro() {
         <button type="submit" className="btn btn-success">
           Cadastrar
         </button>
+
+        <div className="text-center mt-3">
+          <span>Já tem uma conta? </span>
+          <Link to="/login" className="fw-bold text-decoration-none">
+            Entrar
+          </Link>
+        </div>
+
       </form>
     </div>
   )
