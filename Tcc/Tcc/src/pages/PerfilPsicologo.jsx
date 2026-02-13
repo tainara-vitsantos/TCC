@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-function PerfilPaciente() {
+function PerfilPsicologo() {
   const [usuario, setUsuario] = useState(null)
   const [editando, setEditando] = useState(false)
 
@@ -17,26 +17,9 @@ function PerfilPaciente() {
 
   if (!usuario) return <h3>Carregando...</h3>
 
-  function handleFoto(e) {
-    const file = e.target.files[0]
-    const reader = new FileReader()
-
-    reader.onloadend = () => {
-      const usuarioAtualizado = { ...usuario, foto: reader.result }
-      setUsuario(usuarioAtualizado)
-      localStorage.setItem("usuario", JSON.stringify(usuarioAtualizado))
-    }
-
-    if (file) {
-      reader.readAsDataURL(file)
-    }
-  }
-
-
-
   return (
     <div className="container mt-5">
-      <h2>Meu Perfil - Paciente</h2>
+      <h2>Meu Perfil - Psicólogo</h2>
 
       <div className="card p-4 mt-3">
 
@@ -67,23 +50,23 @@ function PerfilPaciente() {
           }
         />
 
-        <label>Convênio</label>
+        <label>CRP</label>
         <input
-          className="form-control mb-3"
+          className="form-control mb-2"
           disabled={!editando}
-          value={usuario.convenio || ""}
+          value={usuario.crp || ""}
           onChange={(e) =>
-            setUsuario({ ...usuario, convenio: e.target.value })
+            setUsuario({ ...usuario, crp: e.target.value })
           }
         />
 
-        <label>Nova Senha</label>
+        <label>Especialidade</label>
         <input
-          type="password"
           className="form-control mb-3"
           disabled={!editando}
+          value={usuario.especialidade || ""}
           onChange={(e) =>
-            setUsuario({ ...usuario, senha: e.target.value })
+            setUsuario({ ...usuario, especialidade: e.target.value })
           }
         />
 
@@ -108,4 +91,4 @@ function PerfilPaciente() {
   )
 }
 
-export default PerfilPaciente
+export default PerfilPsicologo
