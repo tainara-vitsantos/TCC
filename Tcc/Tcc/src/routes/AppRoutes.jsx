@@ -5,6 +5,8 @@ import DashboardPaciente from "../pages/DashboardPaciente"
 import DashboardPsicologo from "../pages/DashboardPsicologo"
 import PrivateRoute from "./PrivateRoute"
 import Home from "../pages/Home"
+import PerfilPaciente from "../pages/PerfilPaciente"
+
 
 
 function AppRoutes() {
@@ -14,6 +16,7 @@ function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
+
         <Route
           path="/dashboard-paciente"
           element={
@@ -32,6 +35,16 @@ function AppRoutes() {
           }
         />
       </Routes>
+
+      <Route
+  path="/perfil-paciente"
+  element={
+    <PrivateRoute tipoPermitido="paciente">
+      <PerfilPaciente />
+    </PrivateRoute>
+  }
+/>
+
     </BrowserRouter>
   )
 }

@@ -1,4 +1,8 @@
 // Pra rodar o projeto
+
+//Comando pra parar de dar o erro.
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+
 npm run dev
 
 // Configuração Git
@@ -6,3 +10,13 @@ git config --global user.name "Tainara Santos"
 git config --global user.email "tainaravit.santos28@gmail.com"
 
 
+✔️ Home pública
+✔️ Login funciona
+✔️ Mantém usuário logado
+✔️ Redireciona corretamente
+✔️ Bloqueia acesso indevido
+✔️ Perfil editável
+✔️ Atualiza dados no localStorage
+✔️ Logout funcionando
+✔️ Rota protegida
+✔️ Controle por tipo de usuário
