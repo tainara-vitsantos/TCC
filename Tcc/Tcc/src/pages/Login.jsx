@@ -1,54 +1,57 @@
-import { useForm } from "react-hook-form"
-import { useNavigate } from "react-router-dom"
-import { useContext } from "react"
+import { useState, useContext } from "react"
+import { useNavigate, Link } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext"
+import "./auth.css"
 
 function Login() {
-  const { register, handleSubmit } = useForm()
-  const navigate = useNavigate()
   const { login } = useContext(AuthContext)
+  const navigate = useNavigate()
 
-  function onSubmit(data) {
-    const usuarioSalvo = JSON.parse(localStorage.getItem("usuario"))
+  const [email, setEmail] = useState("")
+  const [senha, setSenha] = useState("")
 
-    if (
-      usuarioSalvo &&
-      data.email === usuarioSalvo.email &&
-      data.senha === usuarioSalvo.senha
-    ) {
-      // chama o login do contexto
-      login(usuarioSalvo)
+  function handleLogin(e) {
+    e.preventDefault()
 
-      if (usuarioSalvo.tipo === "paciente") {
-        navigate("/dashboard-paciente")
-      } else {
-        navigate("/dashboard-psicologo")
-      }
+    const sucesso = login(email, senha)
+
+    if (sucesso) {
+      navigate("/dashboard-paciente") // ou lógica baseada no tipo
     } else {
-      alert("Email ou senha inválidos")
+      alert("Credenciais inválidas")
     }
   }
 
   return (
-    <div className="container mt-5">
-      <h2>Login</h2>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>Entrar</h2>
+        <p className="subtitle">Acesse sua conta ConnectaMente</p>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          className="form-control mb-2"
-          placeholder="Email"
-          {...register("email", { required: true })}
-        />
+        <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder="Seu email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        <input
-          type="password"
-          className="form-control mb-2"
-          placeholder="Senha"
-          {...register("senha", { required: true })}
-        />
+          <input
+            type="password"
+            placeholder="Sua senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
 
-        <button className="btn btn-primary">Entrar</button>
-      </form>
+          <button type="submit">Entrar</button>
+        </form>
+
+        <div className="auth-footer">
+          Não tem conta? <Link to="/cadastro">Criar conta</Link>
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,93 +1,93 @@
-import { useState, useEffect } from "react"
+import { useContext } from "react"
+import DashboardLayout from "../layouts/DashboardLayout"
+import { AuthContext } from "../context/AuthContext"
 
 function PerfilPsicologo() {
-  const [usuario, setUsuario] = useState(null)
-  const [editando, setEditando] = useState(false)
 
-  useEffect(() => {
-    const dados = JSON.parse(localStorage.getItem("usuario"))
-    setUsuario(dados)
-  }, [])
+  const { usuario } = useContext(AuthContext)
 
-  function salvarAlteracoes() {
-    localStorage.setItem("usuario", JSON.stringify(usuario))
-    setEditando(false)
-    alert("Perfil atualizado com sucesso!")
-  }
-
-  if (!usuario) return <h3>Carregando...</h3>
+  const menuItems = [
+    { id: "home", label: "Home" },
+    { id: "pacientes", label: "Pacientes" },
+    { id: "agenda", label: "Agenda" },
+    { id: "relatorios", label: "Relatórios" }
+  ]
 
   return (
-    <div className="container mt-5">
-      <h2>Meu Perfil - Psicólogo</h2>
+    <DashboardLayout
+      menuItems={menuItems}
+      titulo="Perfil Profissional"
+    >
+      {() => (
 
-      <div className="card p-4 mt-3">
+        <div className="perfil-container">
 
-        <label>Nome</label>
-        <input
-          className="form-control mb-2"
-          disabled={!editando}
-          value={usuario.nome || ""}
-          onChange={(e) =>
-            setUsuario({ ...usuario, nome: e.target.value })
-          }
-        />
+          {/* CARD PRINCIPAL */}
+          <div className="perfil-card">
 
-        <label>Email</label>
-        <input
-          className="form-control mb-2"
-          disabled
-          value={usuario.email || ""}
-        />
+            <div className="perfil-header">
 
-        <label>Telefone</label>
-        <input
-          className="form-control mb-2"
-          disabled={!editando}
-          value={usuario.telefone || ""}
-          onChange={(e) =>
-            setUsuario({ ...usuario, telefone: e.target.value })
-          }
-        />
+              <div className="foto-area">
+                <img
+                  src="https://i.pravatar.cc/150"
+                  alt="foto"
+                  className="foto-perfil"
+                />
+                <button className="btn-alterar-foto">
+                  Alterar Foto
+                </button>
+              </div>
 
-        <label>CRP</label>
-        <input
-          className="form-control mb-2"
-          disabled={!editando}
-          value={usuario.crp || ""}
-          onChange={(e) =>
-            setUsuario({ ...usuario, crp: e.target.value })
-          }
-        />
+              <div className="info-principal">
+                <h2>{usuario?.nome}</h2>
+                <p className="especialidade">Psicólogo Clínico</p>
+                <p className="crp">CRP: 00/12345</p>
+              </div>
 
-        <label>Especialidade</label>
-        <input
-          className="form-control mb-3"
-          disabled={!editando}
-          value={usuario.especialidade || ""}
-          onChange={(e) =>
-            setUsuario({ ...usuario, especialidade: e.target.value })
-          }
-        />
+            </div>
 
-        {!editando ? (
-          <button
-            className="btn btn-primary"
-            onClick={() => setEditando(true)}
-          >
-            Editar Perfil
-          </button>
-        ) : (
-          <button
-            className="btn btn-success"
-            onClick={salvarAlteracoes}
-          >
-            Salvar Alterações
-          </button>
-        )}
+            <hr />
 
-      </div>
-    </div>
+            <div className="perfil-body">
+
+              <div className="info-bloco">
+                <h4>Sobre</h4>
+                <p>
+                  Psicólogo com experiência em terapia cognitivo-comportamental,
+                  atendimento online e presencial. Foco em ansiedade,
+                  depressão e desenvolvimento emocional.
+                </p>
+              </div>
+
+              <div className="info-bloco">
+                <h4>Especialidades</h4>
+                <div className="tags">
+                  <span>Ansiedade</span>
+                  <span>Depressão</span>
+                  <span>Terapia Cognitiva</span>
+                  <span>Relacionamentos</span>
+                </div>
+              </div>
+
+              <div className="info-bloco">
+                <h4>Contato</h4>
+                <p>Email: {usuario?.email}</p>
+                <p>Telefone: (00) 00000-0000</p>
+              </div>
+
+            </div>
+
+            <div className="perfil-footer">
+              <button className="btn-editar">
+                Editar Perfil
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      )}
+    </DashboardLayout>
   )
 }
 
