@@ -16,9 +16,15 @@ function Login() {
     const sucesso = login(email, senha)
 
     if (sucesso) {
-      navigate("/dashboard-paciente") // ou lógica baseada no tipo
+      const usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
+
+      if (usuario.tipo === "psicologo") {
+        navigate("/dashboard-psicologo")
+      } else {
+        navigate("/dashboard-paciente")
+      }
     } else {
-      alert("Credenciais inválidas")
+      alert("Email ou senha inválidos")
     }
   }
 
