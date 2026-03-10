@@ -108,7 +108,7 @@ function Home() {
           </p>
 
           <div className="mt-4">
-            <Link to="/cadastro" className="btn btn-success btn-lg me-3">
+            <Link to="/buscar-psicologo" className="btn btn-success btn-lg me-3">
               Buscar Ajuda
             </Link>
 

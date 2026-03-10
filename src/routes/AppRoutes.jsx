@@ -7,6 +7,7 @@ import PrivateRoute from "./PrivateRoute"
 import Home from "../pages/Home"
 import PerfilPaciente from "../pages/PerfilPaciente"
 import PerfilPsicologo from "../pages/PerfilPsicologo"
+import BuscarPsicologo from "../pages/BuscarPsicologo/BuscarPsicologo"
 
 
 
@@ -17,6 +18,7 @@ function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
+
 
         <Route
           path="/dashboard-paciente"
@@ -62,6 +64,14 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+          <Route
+          path="/buscar-psicologo"
+          element={
+              <BuscarPsicologo />
+            
+          }
+        />
+        
 
       </Routes>
 

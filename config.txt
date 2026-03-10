@@ -9,3 +9,5 @@ npm run dev
 git config --global user.name "Tainara Santos"
 git config --global user.email "tainaravit.santos28@gmail.com"
 
+//Para executar a API
+exeecutar dotnet watch run na pasta Connectamente.API
