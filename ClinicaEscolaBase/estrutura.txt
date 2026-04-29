@@ -1,0 +1,62 @@
+ClinicaEscolaPadraoMvc/
+    README.md
+Models/
+    AnamneseAdolescente.cs
+    AnamneseAdulto.cs
+    Anexo.cs
+    ApplicationUser.cs
+    Atendimento.cs
+    Auditoria.cs
+    DocumentoClinico.cs
+    DocumentoIdentificacaoPaciente.cs
+    EntityBase.cs
+    EvolucaoAtendimento.cs
+    Paciente.cs
+    PlantaoPsicologico.cs
+    Prontuario.cs
+    ResponsavelLegal.cs
+    TermoAutorizacaoMenor.cs
+    TermoCompromissoInformatizacao.cs
+    TermoPsicoterapiaIndividual.cs
+    TermoResponsabilidadeEstagiario.cs
+    TratamentoAnteriorPaciente.cs
+    VinculoAlunoPaciente.cs
+ViewModels/
+    AnamneseAdolescenteViewModel.cs
+    AnamneseAdultoViewModel.cs
+    PacienteFormViewModel.cs
+    PlantaoPsicologicoViewModel.cs
+    ProntuarioDetalhesViewModel.cs
+    VinculoAlunoPacienteFormViewModel.cs
+Enums/
+    SituacaoProntuario.cs
+    StatusAtendimento.cs
+    StatusDocumentoClinico.cs
+    StatusVinculo.cs
+    TipoAcaoAuditoria.cs
+    TipoAtendimento.cs
+    TipoDocumentoClinico.cs
+    TipoTratamentoAnterior.cs
+    TipoUsuario.cs
+Configurations/
+    AnamneseAdolescenteConfiguration.cs
+    AnamneseAdultoConfiguration.cs
+    AnexoConfiguration.cs
+    ApplicationUserConfiguration.cs
+    AtendimentoConfiguration.cs
+    AuditoriaConfiguration.cs
+    DocumentoClinicoConfiguration.cs
+    DocumentoIdentificacaoPacienteConfiguration.cs
+    EvolucaoAtendimentoConfiguration.cs
+    PacienteConfiguration.cs
+    PlantaoPsicologicoConfiguration.cs
+    ProntuarioConfiguration.cs
+    ResponsavelLegalConfiguration.cs
+    TermoAutorizacaoMenorConfiguration.cs
+    TermoCompromissoInformatizacaoConfiguration.cs
+    TermoPsicoterapiaIndividualConfiguration.cs
+    TermoResponsabilidadeEstagiarioConfiguration.cs
+    TratamentoAnteriorPacienteConfiguration.cs
+    VinculoAlunoPacienteConfiguration.cs
+Data/
+    ApplicationDbContext.cs
