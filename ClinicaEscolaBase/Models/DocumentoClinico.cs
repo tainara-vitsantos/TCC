@@ -7,7 +7,7 @@ namespace ClinicaEscolaBase.Models;
 public class DocumentoClinico : EntityBase
 {
     public int ProntuarioId { get; set; }
-    public int PacienteId { get; set; }
+    public Guid PacienteId { get; set; }
     public int? AtendimentoId { get; set; }
     public TipoDocumentoClinico TipoDocumento { get; set; }
     public string CriadoPorUsuarioId { get; set; } = string.Empty;

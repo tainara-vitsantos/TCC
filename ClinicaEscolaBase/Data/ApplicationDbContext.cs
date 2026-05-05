@@ -1,3 +1,4 @@
+using ClinicaEscolaBase.Configurations;
 using ClinicaEscolaBase.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -33,7 +34,24 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         base.OnModelCreating(builder);
 
-        // 🔥 aplica TODAS as configurações automaticamente
-        builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        builder.ApplyConfiguration(new ApplicationUserConfiguration());
+        builder.ApplyConfiguration(new PacienteConfiguration());
+        builder.ApplyConfiguration(new ProntuarioConfiguration());
+        builder.ApplyConfiguration(new TratamentoAnteriorPacienteConfiguration());
+        builder.ApplyConfiguration(new ResponsavelLegalConfiguration());
+        builder.ApplyConfiguration(new VinculoAlunoPacienteConfiguration());
+        builder.ApplyConfiguration(new AtendimentoConfiguration());
+        builder.ApplyConfiguration(new DocumentoClinicoConfiguration());
+        builder.ApplyConfiguration(new DocumentoIdentificacaoPacienteConfiguration());
+        builder.ApplyConfiguration(new AnamneseAdultoConfiguration());
+        builder.ApplyConfiguration(new AnamneseAdolescenteConfiguration());
+        builder.ApplyConfiguration(new PlantaoPsicologicoConfiguration());
+        builder.ApplyConfiguration(new EvolucaoAtendimentoConfiguration());
+        builder.ApplyConfiguration(new TermoPsicoterapiaIndividualConfiguration());
+        builder.ApplyConfiguration(new TermoAutorizacaoMenorConfiguration());
+        builder.ApplyConfiguration(new TermoCompromissoInformatizacaoConfiguration());
+        builder.ApplyConfiguration(new TermoResponsabilidadeEstagiarioConfiguration());
+        builder.ApplyConfiguration(new AnexoConfiguration());
+        builder.ApplyConfiguration(new AuditoriaConfiguration());
     }
 }

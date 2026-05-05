@@ -4,7 +4,7 @@ namespace ClinicaEscolaBase.Models;
 
 public class TratamentoAnteriorPaciente : EntityBase
 {
-    public int PacienteId { get; set; }
+    public Guid PacienteId { get; set; }
     public TipoTratamentoAnterior TipoTratamento { get; set; }
     public bool PossuiHistorico { get; set; }
     public string? MotivoInternacao { get; set; }

@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
 
+using System;
+using System.Collections.Generic;
+
 namespace ClinicaEscolaBase.Models;
 
-public class Paciente : EntityBase
+public class Paciente
 {
+    public Guid Id { get; set; }
     public string NomeCompleto { get; set; } = string.Empty;
     public DateTime? DataNascimento { get; set; }
     public string? Sexo { get; set; }

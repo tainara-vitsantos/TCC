@@ -6,7 +6,7 @@ namespace ClinicaEscolaBase.Models;
 
 public class Prontuario : EntityBase
 {
-    public int PacienteId { get; set; }
+    public Guid PacienteId { get; set; }
     public string NumeroProntuario { get; set; } = string.Empty;
     public DateTime? DataPrimeiraConsulta { get; set; }
     public SituacaoProntuario SituacaoProntuario { get; set; } = SituacaoProntuario.Ativo;

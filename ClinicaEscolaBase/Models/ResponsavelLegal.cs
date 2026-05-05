@@ -2,7 +2,7 @@ namespace ClinicaEscolaBase.Models;
 
 public class ResponsavelLegal : EntityBase
 {
-    public int PacienteId { get; set; }
+    public Guid PacienteId { get; set; }
     public string NomeCompleto { get; set; } = string.Empty;
     public string? RG { get; set; }
     public string? CPF { get; set; }

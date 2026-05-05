@@ -1,0 +1,5 @@
+"ConnectionStrings": {
+"DefaultConnection": "Server=localhost;Database=ClinicaEscolaDB;Trusted_Connection=True;TrustServerCertificate=True"}
+
+git config --global user.name "Tainara Santos"
+git config --global user.email "tainaravit.santos28@gmail.com"

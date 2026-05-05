@@ -10,6 +10,7 @@ public class PacienteConfiguration : IEntityTypeConfiguration<Paciente>
     {
         builder.ToTable("Pacientes");
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id).ValueGeneratedNever();
         builder.Property(x => x.NomeCompleto).HasMaxLength(200).IsRequired();
         builder.Property(x => x.Sexo).HasMaxLength(30);
         builder.Property(x => x.Naturalidade).HasMaxLength(100);

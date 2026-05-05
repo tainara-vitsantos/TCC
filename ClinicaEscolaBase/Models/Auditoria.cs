@@ -9,7 +9,7 @@ public class Auditoria : EntityBase
     public TipoAcaoAuditoria TipoAcao { get; set; }
     public string Entidade { get; set; } = string.Empty;
     public string RegistroId { get; set; } = string.Empty;
-    public int? PacienteId { get; set; }
+    public Guid? PacienteId { get; set; }
     public int? ProntuarioId { get; set; }
     public DateTime DataHora { get; set; } = DateTime.UtcNow;
     public string? IP { get; set; }

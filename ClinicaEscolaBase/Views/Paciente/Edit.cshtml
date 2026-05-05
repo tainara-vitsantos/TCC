@@ -1,0 +1,45 @@
+@model ClinicaEscolaBase.Models.Paciente
+
+@{
+    ViewData["Title"] = "Editar Paciente";
+}
+
+<h1>Editar Paciente</h1>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <input asp-for="Id" type="hidden" />
+
+    <div class="mb-3">
+        <label asp-for="NomeCompleto" class="form-label"></label>
+        <input asp-for="NomeCompleto" class="form-control" />
+        <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DataNascimento" class="form-label"></label>
+        <input asp-for="DataNascimento" class="form-control" type="date" />
+        <span asp-validation-for="DataNascimento" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Sexo" class="form-label"></label>
+        <input asp-for="Sexo" class="form-control" />
+        <span asp-validation-for="Sexo" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CPF" class="form-label"></label>
+        <input asp-for="CPF" class="form-control" />
+        <span asp-validation-for="CPF" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Telefone" class="form-label"></label>
+        <input asp-for="Telefone" class="form-control" />
+        <span asp-validation-for="Telefone" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

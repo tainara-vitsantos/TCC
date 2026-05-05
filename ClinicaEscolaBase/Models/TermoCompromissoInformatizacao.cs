@@ -6,7 +6,7 @@ public class TermoCompromissoInformatizacao
 {
     public int DocumentoClinicoId { get; set; }
     public string EstagiarioUsuarioId { get; set; } = string.Empty;
-    public int PacienteId { get; set; }
+    public Guid PacienteId { get; set; }
     public string? EnderecoEstagiario { get; set; }
     public string? CPFEstagiario { get; set; }
     public bool DeclarouAnuenciaPaciente { get; set; }

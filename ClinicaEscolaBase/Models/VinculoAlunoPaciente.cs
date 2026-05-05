@@ -5,7 +5,7 @@ namespace ClinicaEscolaBase.Models;
 
 public class VinculoAlunoPaciente : EntityBase
 {
-    public int PacienteId { get; set; }
+    public Guid PacienteId { get; set; }
     public string AlunoId { get; set; } = string.Empty;
     public string LiberadoPorUsuarioId { get; set; } = string.Empty;
     public DateTime DataLiberacao { get; set; }

@@ -1,0 +1,35 @@
+@model ClinicaEscolaBase.Models.Paciente
+
+@{
+    ViewData["Title"] = "Detalhes do Paciente";
+}
+
+<div class="mb-3">
+    <h1>Detalhes do Paciente</h1>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Nome completo</dt>
+            <dd class="col-sm-9">@Model.NomeCompleto</dd>
+
+            <dt class="col-sm-3">Data de nascimento</dt>
+            <dd class="col-sm-9">@Model.DataNascimento?.ToString("yyyy-MM-dd")</dd>
+
+            <dt class="col-sm-3">Sexo</dt>
+            <dd class="col-sm-9">@Model.Sexo</dd>
+
+            <dt class="col-sm-3">CPF</dt>
+            <dd class="col-sm-9">@Model.CPF</dd>
+
+            <dt class="col-sm-3">Telefone</dt>
+            <dd class="col-sm-9">@Model.Telefone</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="d-flex gap-2">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</div>
