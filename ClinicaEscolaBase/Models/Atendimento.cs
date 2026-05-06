@@ -6,7 +6,7 @@ namespace ClinicaEscolaBase.Models;
 
 public class Atendimento : EntityBase
 {
-    public int ProntuarioId { get; set; }
+    public Guid ProntuarioId { get; set; }
     public Guid PacienteId { get; set; }
     public string AlunoId { get; set; } = string.Empty;
     public string? SupervisorId { get; set; }

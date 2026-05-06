@@ -3,3 +3,12 @@
 
 git config --global user.name "Tainara Santos"
 git config --global user.email "tainaravit.santos28@gmail.com"
+
+1 - winget install Microsoft.DotNet.SDK.9
+2 - dotnet --list-sdks
+3 - dotnet watch run 
+
+
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+

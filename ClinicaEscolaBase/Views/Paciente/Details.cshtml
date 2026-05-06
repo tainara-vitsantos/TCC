@@ -4,32 +4,143 @@
     ViewData["Title"] = "Detalhes do Paciente";
 }
 
-<div class="mb-3">
-    <h1>Detalhes do Paciente</h1>
-</div>
+<h1 class="mb-3">Ficha do Paciente</h1>
 
-<div class="card mb-3">
+<!-- 🟢 DADOS DO PACIENTE -->
+<div class="card mb-3 shadow-sm">
     <div class="card-body">
-        <dl class="row mb-0">
-            <dt class="col-sm-3">Nome completo</dt>
-            <dd class="col-sm-9">@Model.NomeCompleto</dd>
+        <h4 class="text-primary mb-3">@Model.NomeCompleto</h4>
 
+        <dl class="row mb-0">
             <dt class="col-sm-3">Data de nascimento</dt>
-            <dd class="col-sm-9">@Model.DataNascimento?.ToString("yyyy-MM-dd")</dd>
+            <dd class="col-sm-9">@Model.DataNascimento?.ToString("dd/MM/yyyy")</dd>
 
             <dt class="col-sm-3">Sexo</dt>
-            <dd class="col-sm-9">@Model.Sexo</dd>
+            <dd class="col-sm-9">@(Model.Sexo ?? "Não informado")</dd>
 
             <dt class="col-sm-3">CPF</dt>
-            <dd class="col-sm-9">@Model.CPF</dd>
+            <dd class="col-sm-9">@(Model.CPF ?? "Não informado")</dd>
 
             <dt class="col-sm-3">Telefone</dt>
-            <dd class="col-sm-9">@Model.Telefone</dd>
+            <dd class="col-sm-9">@(Model.Telefone ?? "Não informado")</dd>
+
+            <dt class="col-sm-3">Cidade</dt>
+            <dd class="col-sm-9">@(Model.Cidade ?? "Não informado")</dd>
         </dl>
     </div>
 </div>
 
-<div class="d-flex gap-2">
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+<!-- 🔵 PRONTUÁRIO -->
+@if (Model.Prontuario != null)
+{
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="text-success mb-3">Prontuário</h4>
+
+            <dl class="row mb-0">
+                <dt class="col-sm-3">Número</dt>
+                <dd class="col-sm-9">@Model.Prontuario.NumeroProntuario</dd>
+
+                <dt class="col-sm-3">Data 1ª Consulta</dt>
+                <dd class="col-sm-9">@Model.Prontuario.DataPrimeiraConsulta?.ToString("dd/MM/yyyy")</dd>
+
+                <dt class="col-sm-3">Situação</dt>
+                <dd class="col-sm-9">@Model.Prontuario.SituacaoProntuario</dd>
+
+                <dt class="col-sm-3">Observações</dt>
+                <dd class="col-sm-9">
+                    @(string.IsNullOrEmpty(Model.Prontuario.ObservacoesGerais) 
+                        ? "Nenhuma observação" 
+                        : Model.Prontuario.ObservacoesGerais)
+                </dd>
+            </dl>
+
+            <div class="mt-3">
+                <a asp-controller="Prontuario"
+                   asp-action="Edit"
+                   asp-route-id="@Model.Prontuario.Id"
+                   class="btn btn-warning">
+                   Editar Prontuário
+                </a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning mt-3">
+        Este paciente ainda não possui prontuário.
+    </div>
+}
+
+<!-- 🔘 ATENDIMENTOS -->
+@if (Model.Prontuario != null)
+{
+    <div class="card shadow-sm mt-4">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h4 class="text-success mb-0">Atendimentos</h4>
+                    <p class="text-muted mb-0">Agenda e histórico de atendimentos desse paciente.</p>
+                </div>
+                <a asp-controller="Atendimento"
+                   asp-action="Create"
+                   asp-route-pacienteId="@Model.Id"
+                   class="btn btn-primary">
+                    Agendar Atendimento
+                </a>
+            </div>
+
+            @if (Model.Atendimentos.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Data / Hora</th>
+                                <th>Tipo</th>
+                                <th>Status</th>
+                                <th>Observações</th>
+                                <th class="text-end">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var atendimento in Model.Atendimentos.OrderByDescending(x => x.DataHoraInicio))
+                            {
+                                <tr>
+                                    <td>@atendimento.DataHoraInicio.ToString("dd/MM/yyyy HH:mm")</td>
+                                    <td>@atendimento.TipoAtendimento</td>
+                                    <td>@atendimento.StatusAtendimento</td>
+                                    <td>@(string.IsNullOrWhiteSpace(atendimento.Observacoes) ? "-" : atendimento.Observacoes)</td>
+                                    <td class="text-end">
+                                        <a asp-controller="Atendimento" asp-action="Details" asp-route-id="@atendimento.Id" class="btn btn-sm btn-outline-primary me-1">Detalhes</a>
+                                        <a asp-controller="Atendimento" asp-action="Edit" asp-route-id="@atendimento.Id" class="btn btn-sm btn-outline-secondary me-1">Editar</a>
+                                        <a asp-controller="Atendimento" asp-action="Delete" asp-route-id="@atendimento.Id" class="btn btn-sm btn-outline-danger">Excluir</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info mb-0">
+                    Nenhum atendimento registrado para este paciente.
+                </div>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning mt-4">
+        Não é possível agendar atendimento porque o paciente ainda não possui prontuário.
+    </div>
+}
+
+<!-- 🔘 AÇÕES -->
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar Paciente</a>
     <a asp-action="Index" class="btn btn-secondary">Voltar</a>
 </div>

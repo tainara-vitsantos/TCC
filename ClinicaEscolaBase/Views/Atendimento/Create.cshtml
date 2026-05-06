@@ -1,0 +1,61 @@
+@using System.Linq
+@model ClinicaEscolaBase.Models.Atendimento
+
+@{
+    ViewData["Title"] = "Agendar Atendimento";
+}
+
+<h1>Agendar Atendimento</h1>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            <div class="row gy-3">
+                <div class="col-12">
+                    <div class="alert alert-secondary">
+                        <strong>Paciente:</strong> @ViewBag.PacienteNome<br />
+                        <strong>Prontuário:</strong> @ViewBag.ProntuarioNumero
+                    </div>
+                </div>
+
+                @Html.HiddenFor(model => model.PacienteId)
+                @Html.HiddenFor(model => model.ProntuarioId)
+
+                <div class="col-md-6">
+                    <label asp-for="TipoAtendimento" class="form-label"></label>
+                    @Html.DropDownListFor(model => model.TipoAtendimento, (SelectList?)(ViewData["TipoAtendimento"] ?? new SelectList(Enumerable.Empty<object>())), "Selecione", new { @class = "form-select" })
+                    @Html.ValidationMessageFor(model => model.TipoAtendimento, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="StatusAtendimento" class="form-label"></label>
+                    @Html.DropDownListFor(model => model.StatusAtendimento, (SelectList?)(ViewData["StatusAtendimento"] ?? new SelectList(Enumerable.Empty<object>())), "Selecione", new { @class = "form-select" })
+                    @Html.ValidationMessageFor(model => model.StatusAtendimento, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="DataHoraInicio" class="form-label"></label>
+                    @Html.TextBoxFor(model => model.DataHoraInicio, "{0:dd/MM/yyyy HH:mm}", new { @class = "form-control", placeholder = "dd/MM/yyyy HH:mm" })
+                    @Html.ValidationMessageFor(model => model.DataHoraInicio, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="DataHoraFim" class="form-label"></label>
+                    @Html.TextBoxFor(model => model.DataHoraFim, "{0:dd/MM/yyyy HH:mm}", new { @class = "form-control", placeholder = "dd/MM/yyyy HH:mm" })
+                    @Html.ValidationMessageFor(model => model.DataHoraFim, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-12">
+                    <label asp-for="Observacoes" class="form-label"></label>
+                    @Html.TextAreaFor(model => model.Observacoes, 4, 0, new { @class = "form-control", placeholder = "Escreva observações adicionais" })
+                    @Html.ValidationMessageFor(model => model.Observacoes, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success">Salvar Atendimento</button>
+                    <a asp-controller="Paciente" asp-action="Details" asp-route-id="@Model.PacienteId" class="btn btn-secondary ms-2">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

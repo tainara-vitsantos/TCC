@@ -60,8 +60,7 @@ namespace ClinicaEscolaBase.Migrations
                 name: "Pacientes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NomeCompleto = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Sexo = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
@@ -82,10 +81,7 @@ namespace ClinicaEscolaBase.Migrations
                     TelefoneRecado = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     NomePai = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     NomeMae = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
-                    Observacoes = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DataCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DataAtualizacao = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Ativo = table.Column<bool>(type: "bit", nullable: false)
+                    Observacoes = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -231,7 +227,7 @@ namespace ClinicaEscolaBase.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PacienteId = table.Column<int>(type: "int", nullable: false),
+                    PacienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NumeroProntuario = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     DataPrimeiraConsulta = table.Column<DateTime>(type: "datetime2", nullable: true),
                     SituacaoProntuario = table.Column<int>(type: "int", nullable: false),
@@ -257,7 +253,7 @@ namespace ClinicaEscolaBase.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PacienteId = table.Column<int>(type: "int", nullable: false),
+                    PacienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NomeCompleto = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     RG = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     CPF = table.Column<string>(type: "nvarchar(14)", maxLength: 14, nullable: true),
@@ -287,7 +283,7 @@ namespace ClinicaEscolaBase.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PacienteId = table.Column<int>(type: "int", nullable: false),
+                    PacienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TipoTratamento = table.Column<int>(type: "int", nullable: false),
                     PossuiHistorico = table.Column<bool>(type: "bit", nullable: false),
                     MotivoInternacao = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -313,7 +309,7 @@ namespace ClinicaEscolaBase.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PacienteId = table.Column<int>(type: "int", nullable: false),
+                    PacienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AlunoId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     LiberadoPorUsuarioId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DataLiberacao = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -363,7 +359,7 @@ namespace ClinicaEscolaBase.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProntuarioId = table.Column<int>(type: "int", nullable: false),
-                    PacienteId = table.Column<int>(type: "int", nullable: false),
+                    PacienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AlunoId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     SupervisorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     TipoAtendimento = table.Column<int>(type: "int", nullable: false),
@@ -415,7 +411,7 @@ namespace ClinicaEscolaBase.Migrations
                     TipoAcao = table.Column<int>(type: "int", nullable: false),
                     Entidade = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     RegistroId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    PacienteId = table.Column<int>(type: "int", nullable: true),
+                    PacienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ProntuarioId = table.Column<int>(type: "int", nullable: true),
                     DataHora = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IP = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
@@ -457,7 +453,7 @@ namespace ClinicaEscolaBase.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProntuarioId = table.Column<int>(type: "int", nullable: false),
-                    PacienteId = table.Column<int>(type: "int", nullable: false),
+                    PacienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AtendimentoId = table.Column<int>(type: "int", nullable: true),
                     TipoDocumento = table.Column<int>(type: "int", nullable: false),
                     CriadoPorUsuarioId = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -813,7 +809,7 @@ namespace ClinicaEscolaBase.Migrations
                 {
                     DocumentoClinicoId = table.Column<int>(type: "int", nullable: false),
                     EstagiarioUsuarioId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    PacienteId = table.Column<int>(type: "int", nullable: false),
+                    PacienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EnderecoEstagiario = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CPFEstagiario = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeclarouAnuenciaPaciente = table.Column<bool>(type: "bit", nullable: false),

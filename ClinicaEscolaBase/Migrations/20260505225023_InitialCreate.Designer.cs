@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClinicaEscolaBase.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260429120542_InitialCreate")]
+    [Migration("20260505225023_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -490,8 +490,8 @@ namespace ClinicaEscolaBase.Migrations
                     b.Property<string>("Observacoes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("ProntuarioId")
                         .HasColumnType("int");
@@ -550,8 +550,8 @@ namespace ClinicaEscolaBase.Migrations
                     b.Property<string>("Observacoes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PacienteId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("PacienteId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int?>("ProntuarioId")
                         .HasColumnType("int");
@@ -627,8 +627,8 @@ namespace ClinicaEscolaBase.Migrations
                     b.Property<string>("Observacoes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("ProntuarioId")
                         .HasColumnType("int");
@@ -797,14 +797,8 @@ namespace ClinicaEscolaBase.Migrations
 
             modelBuilder.Entity("ClinicaEscolaBase.Models.Paciente", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("Ativo")
-                        .HasColumnType("bit");
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Bairro")
                         .HasMaxLength(100)
@@ -821,12 +815,6 @@ namespace ClinicaEscolaBase.Migrations
                     b.Property<string>("Cidade")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<DateTime?>("DataAtualizacao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DataNascimento")
                         .HasColumnType("datetime2");
@@ -960,8 +948,8 @@ namespace ClinicaEscolaBase.Migrations
                     b.Property<string>("ObservacoesGerais")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("SituacaoProntuario")
                         .HasColumnType("int");
@@ -1015,8 +1003,8 @@ namespace ClinicaEscolaBase.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("RG")
                         .HasMaxLength(30)
@@ -1108,8 +1096,8 @@ namespace ClinicaEscolaBase.Migrations
                     b.Property<string>("Observacoes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("DocumentoClinicoId");
 
@@ -1251,8 +1239,8 @@ namespace ClinicaEscolaBase.Migrations
                     b.Property<string>("Observacoes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("PossuiHistorico")
                         .HasColumnType("bit");
@@ -1301,8 +1289,8 @@ namespace ClinicaEscolaBase.Migrations
                     b.Property<string>("Observacoes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("PermiteEscrita")
                         .HasColumnType("bit");

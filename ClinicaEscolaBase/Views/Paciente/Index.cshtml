@@ -14,6 +14,8 @@
         <tr>
             <th>Nome</th>
             <th>CPF</th>
+            <th>Telefone</th>
+            <th>Cidade</th>
             <th class="text-end">Ações</th>
         </tr>
     </thead>
@@ -23,6 +25,8 @@
             <tr>
                 <td>@paciente.NomeCompleto</td>
                 <td>@paciente.CPF</td>
+                <td>@paciente.Telefone</td>
+                <td>@paciente.Cidade</td>
                 <td class="text-end">
                     <a asp-action="Details" asp-route-id="@paciente.Id" class="btn btn-sm btn-info me-1">Detalhes</a>
                     <a asp-action="Edit" asp-route-id="@paciente.Id" class="btn btn-sm btn-warning me-1">Editar</a>
